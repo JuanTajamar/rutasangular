@@ -1,0 +1,53 @@
+div {
+  max-width: 450px; /* Ancho máximo de la tarjeta */
+  margin: 40px auto; /* Centra la tarjeta horizontalmente */
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+  text-align: center;
+  font-family: Arial, sans-serif; /* Fuente limpia */
+}
+
+/* Título principal */
+h1 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 2em; /* 2em = 2 veces el tamaño de fuente base */
+}
+
+/* Estilo base para el subtítulo (resultado o error) */
+h2 {
+  font-size: 1.25em;
+  font-weight: 500; /* Un poco menos grueso que 'bold' */
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+/* Clase para el mensaje de éxito (azul) */
+.success {
+  color: #0056b3; /* Un azul más profesional */
+}
+
+/* Clase para el mensaje de error (rojo) */
+.error {
+  color: #d93025; /* Un rojo claro */
+}
+
+/* Estilo del botón */
+button {
+  background-color: #007bff; /* Color de fondo azul */
+  color: white; /* Texto blanco */
+  border: none;
+  padding: 12px 24px; /* Espaciado interno (vertical | horizontal) */
+  font-size: 1rem; /* 1rem = tamaño de fuente base */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+/* Efecto al pasar el ratón por encima del botón */
+button:hover {
+  background-color: #0056b3; /* Azul más oscuro */
+}

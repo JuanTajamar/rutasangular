@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* 1. Importar las fuentes del Oeste */@import url('https://fonts.googleapis.com/css2?family=Rye&family=Cutive+Mono&display=swap');
+
+/* 2. Estilo para la página entera (la pared del saloon) */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Textura de madera oscura con degradados lineales */
+  background-color: #3a2a1c; /* Color base de madera oscura */
+  background-image: 
+    /* Vetas de madera (líneas oscuras) */
+    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px),
+    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+    /* Tablones verticales (sutil) */
+    linear-gradient(to right, #4b3421 0%, #3a2a1c 5%, #3a2a1c 95%, #4b3421 100%);
+  background-size: 20px 20px, 20px 20px, 100% 100%;
+  
+  /* Asegura que el contenido se desplace sobre el fondo */
+  background-attachment: fixed;
+  
+  /* Añade un poco de espacio para que el cartel no toque el borde */
+  padding: 20px 0;
+}

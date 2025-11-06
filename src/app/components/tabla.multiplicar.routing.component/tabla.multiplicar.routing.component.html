@@ -1,0 +1,25 @@
+<div class="wanted-poster">
+
+    <h1>SE BUSCA</h1>
+    
+    <h2>Tabla del {{numero}}</h2>
+
+    @if(numero) {
+        <table>
+            <thead>
+                <tr>
+                    <th>OPERACIÓN</th>
+                    <th>RESULTADO</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (num of numeros; track num; let i = $index) {
+                    <tr>
+                        <td>{{ numero }} * {{i + 1}}</td>
+                        <td>{{ num }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

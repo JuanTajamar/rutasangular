@@ -1,0 +1,172 @@
+/* ======================================================================
+  PARTE 1: CÓDIGO PARA TU ARCHIVO GLOBAL (styles.css)
+======================================================================
+*/
+
+/* 1. Importar las fuentes del Oeste */
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Cutive+Mono&display=swap');
+
+/* 2. Estilo para la página entera (la pared del saloon) */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Textura de madera oscura con degradados lineales */
+  background-color: #3a2a1c; /* Color base de madera oscura */
+  background-image: 
+    /* Vetas de madera (líneas oscuras) */
+    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px),
+    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+    /* Tablones verticales (sutil) */
+    linear-gradient(to right, #4b3421 0%, #3a2a1c 5%, #3a2a1c 95%, #4b3421 100%);
+  background-size: 20px 20px, 20px 20px, 100% 100%;
+  
+  /* Asegura que el contenido se desplace sobre el fondo */
+  background-attachment: fixed;
+  
+  /* Añade un poco de espacio para que el cartel no toque el borde */
+  padding: 20px 0;
+}
+
+
+/* ======================================================================
+  PARTE 2: CÓDIGO PARA TU ARCHIVO DE COMPONENTE (p.ej. tu-componente.component.css)
+======================================================================
+*/
+
+/* 1. El Contenedor (El Papel del Cartel) */
+.wanted-poster {
+  position: relative; /* Para posicionar los "clavos" */
+  width: 90%;
+  max-width: 550px;
+  margin: 40px auto; /* Centrado en la "pared" */
+  
+  /* Textura de papel de pergamino */
+  background-color: #f3e5ab;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0) 15%);
+  
+  /* Bordes "quemados" (la parte complicada) */
+  border-radius: 3px;
+  /* Esta es la magia:
+     Sombra 1: Borde interior nítido del mismo color que el papel
+     Sombra 2: Línea exterior oscura (el borde quemado)
+     Sombra 3: Sombra exterior difusa (el "humo")
+     Sombra 4: Mancha interior (la "quemadura" que se mete en el papel)
+  */
+  box-shadow: 
+    0 0 0 7px #f3e5ab,         /* 1. Borde interior */
+    0 0 0 10px #7a5a3a,        /* 2. Línea quemada */
+    0 0 20px 10px rgba(0,0,0,0.6), /* 3. Sombra de humo */
+    inset 0 0 30px rgba(139, 69, 19, 0.25); /* 4. Mancha interior */
+  
+  padding: 25px 40px;
+  box-sizing: border-box; /* Para que el padding no afecte al ancho */
+}
+
+/* 2. Los "Clavos" (Pseudo-elementos) */
+/* Usamos ::before y ::after para añadir los clavos en las esquinas */
+.wanted-poster::before,
+.wanted-poster::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  width: 14px;
+  height: 14px;
+  
+  /* Estilo de cabeza de clavo metálica */
+  background: #666;
+  border-radius: 50%;
+  border: 1px solid #333;
+  box-shadow: 0 0 3px 1px #111, /* Sombra oscura */
+              inset 0 0 2px #aaa; /* Brillo metálico */
+}
+
+.wanted-poster::before {
+  left: 20px; /* Clavo izquierdo */
+}
+
+.wanted-poster::after {
+  right: 20px; /* Clavo derecho */
+}
+
+/* 3. Título "SE BUSCA" (H1) */
+/* NOTA: :host /deep/ o ::ng-deep puede ser necesario si el H1 está fuera
+   del control directo del componente, pero aquí asumimos que está en tu HTML */
+.wanted-poster h1 {
+  font-family: 'Rye', cursive; /* Fuente Western principal */
+  /* Tamaño de fuente responsivo */
+  font-size: clamp(3em, 10vw, 6em); /* (min, ideal, max) */
+  color: #333;
+  text-align: center;
+  text-transform: uppercase;
+  /* Sombra de texto para darle un efecto "gastado" */
+  text-shadow: 3px 3px 0px rgba(255,255,255,0.5);
+  margin: 0;
+  /* Borde doble como en los carteles antiguos */
+  border-bottom: 4px double #333;
+  padding-bottom: 10px;
+}
+
+/* 4. Subtítulo (el "Crimen") (H2) */
+.wanted-poster h2 {
+  font-family: 'Cutive Mono', monospace; /* Fuente de "máquina de escribir" */
+  font-size: 1.5em;
+  text-align: center;
+  color: #444;
+  margin-top: 15px;
+  font-weight: 600;
+  background: rgba(139, 69, 19, 0.05); /* Mancha sutil */
+  padding: 5px;
+}
+
+/* 5. La Tabla (los "Detalles") */
+.wanted-poster table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-family: 'Cutive Mono', monospace;
+  /* Añadimos un pseudo-elemento para la "Recompensa" */
+  position: relative;
+}
+
+.wanted-poster th {
+  font-family: 'Rye', cursive;
+  font-size: 1.2em;
+  color: #333;
+  padding: 10px;
+  text-align: left;
+}
+
+.wanted-poster td {
+  padding: 12px 10px;
+  text-align: left;
+  color: #222;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+/* Líneas de puntos, como un libro de cuentas */
+.wanted-poster tbody tr {
+  border-bottom: 1px dashed #7a5a3a;
+}
+
+.wanted-poster tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* 6. La Recompensa (Usando un pseudo-elemento en la tabla) */
+.wanted-poster table::after {
+  content: 'RECOMPENSA: $1000';
+  display: block;
+  font-family: 'Rye', cursive;
+  font-size: 1.7em;
+  text-align: center;
+  color: #b30000; /* Rojo oscuro */
+  text-shadow: 1px 1px 0px #333;
+  margin-top: 25px;
+  border-top: 2px solid #333;
+  padding-top: 15px;
+}

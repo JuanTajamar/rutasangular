@@ -1,0 +1,7 @@
+<div class="western-nav">
+    <ul>
+        @for (random of randoms;  track random){
+            <li><a [routerLink]="['/tablamultiplicar', random]">Tabla {{random}}</a></li>
+        }
+    </ul>
+</div>
